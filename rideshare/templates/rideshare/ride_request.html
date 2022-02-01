@@ -1,0 +1,26 @@
+{% extends 'rideshare/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+{% load crispy_forms_tags %}
+
+<h1>Request a ride</h1>
+<div class="col-8">
+  <form method="POST" class="form-group"> {% csrf_token %}
+    <div align='left'>
+      {{form|crispy}}
+    </div>
+  <button type="submit" class="btn btn-success">Save</button>  
+</form>
+</div>
+
+{% else %}
+<p>
+  Sorry!
+  You should <a href="/register">create an account</a> first
+  or <a href="/login">login</a>.
+</p>
+
+{% endif %}
+{% endblock %}

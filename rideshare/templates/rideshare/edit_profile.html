@@ -1,0 +1,55 @@
+{% extends 'rideshare/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+{% load crispy_forms_tags %}
+
+<h1>Update my profile</h1>
+
+<div class="col-7">
+<form method="POST" name="user_post" class="form-group"> {% csrf_token %}
+  <h3>Account Info</h3>
+  <div align="left">
+    {{user_form|crispy}}
+  </div>
+  <button type="submit" name="user_button" class="btn btn-success">Save</button>
+</form>
+</left>
+</div>
+
+<hr class="mt-0 mb-4"/>
+
+<div class="col-7">
+  <form method="POST" class="form-group"> {% csrf_token %}    
+    <h3>Personal Info</h3>
+    <div align='left'>
+      {{personal_form|crispy}}
+    </div>
+    <button type="submit" name="personal_button" class="btn btn-success">Save</button>
+  </form>
+  </div>
+
+{% if vehicle_form %}
+<hr class="mt-0 mb-4"/>
+
+<div class="col-7">
+  <form method="POST" class="form-group"> {% csrf_token %}
+    <h3>Vehicle Info</h3>
+    <div align='left'>
+      {{vehicle_form|crispy}}
+    </div>
+    <button type="submit" name="vehicle_button" class="btn btn-success">Save</button>
+  </form>
+</div>
+{% endif %}
+
+{% else %}
+<p>
+  Sorry!
+  You should <a href="/register">create an account</a> first
+  or <a href="/login">login</a>.
+</p>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,7 @@
+Django>3.0
+asgiref
+django-crispy-forms
+django-phonenumber-field[phonenumbers]
+phonenumbers
+psycopg2
+sqlparse
